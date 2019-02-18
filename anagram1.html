@@ -1,0 +1,46 @@
+<script>
+  function isAnagram(str1,str2){
+  
+    if (str1.length !== str2.length)
+     return false;
+    var str1 = str1.toLowerCase();  //converting all characters of string1 into lowercase
+    var str2 = str2.toLowerCase();  //converting all characters of string2 into lowercase
+    var arr1 = [];
+    var arr2 = [];
+       for (var i = 0; i < str1.length; ++i) {   //counting the length of string1
+           arr1[i] = str1[i];          //initializing it to arr[1]
+            
+           arr2[i] = str2[i];          //initializing into arr[2]
+       }
+   
+       var arr1 = sortString(arr1);    //sortstring function is called here
+       var arr2 = sortString(arr2);    //sortString function is called here
+       for (var i = 0; i < arr1.length; ++i)
+        if (arr1[i] !== arr2[i]) return false;
+       return true;
+   
+   
+   }
+  
+  function sortString(arr){     //sorting is used here
+  
+    
+    var tmp;                  //tmp variable is used for swaping
+    for(var i = 0; i < arr.length; i++){
+      for(var j = i + 1; j < arr.length; j++){
+        if(arr[i] > arr[j]){
+          tmp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = tmp;
+        }
+      }
+    }
+  
+    return arr;
+  }
+  
+    
+  console.log(isAnagram('dog','god')); // true     
+  console.log(isAnagram('cellar', 'recall')); //true
+  console.log(isAnagram('arm','ellbow')); //false
+</Script>
